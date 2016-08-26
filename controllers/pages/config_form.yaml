@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Page
+
+# Model Form Field configuration
+form: $/digitalronin/wiki/models/page/fields.yaml
+
+# Model Class name
+modelClass: DigitalRonin\Wiki\Models\Page
+
+# Default redirect location
+defaultRedirect: digitalronin/wiki/pages
+
+# Create page
+create:
+    title: Create Page
+    redirect: digitalronin/wiki/pages/update/:id
+    redirectClose: digitalronin/wiki/pages
+
+# Update page
+update:
+    title: Edit Page
+    redirect: digitalronin/wiki/pages
+    redirectClose: digitalronin/wiki/pages
+
+# Preview page
+preview:
+    title: Preview Page
