@@ -1,0 +1,19 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    title:
+        label: digitalronin.wiki::lang.page.title
+        searchable: true
+
+    created_at:
+        label: digitalronin.wiki::lang.page.created
+        type: date
+        invisible: true
+
+    updated_at:
+        label: digitalronin.wiki::lang.page.updated
+        type: date
+        invisible: true
