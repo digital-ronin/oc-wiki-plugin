@@ -1,0 +1,34 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+
+    title:
+        label: digitalronin.wiki::lang.page.title
+        span: left
+        placeholder: digitalronin.wiki::lang.page.title_placeholder
+
+    slug:
+        label: digitalronin.wiki::lang.page.slug
+        span: right
+        placeholder: digitalronin.wiki::lang.page.slug_placeholder
+        preset:
+          field: title
+          type: slug
+
+    toolbar:
+      type: partial
+      path: page_toolbar
+      cssClass: collapse-visible
+
+secondaryTabs:
+    stretch: true
+    fields:
+        content:
+            tab: Edit
+            type: markdown
+            cssClass: field-slim blog-post-preview
+            size: huge
+            stretch: true
+            mode: split
