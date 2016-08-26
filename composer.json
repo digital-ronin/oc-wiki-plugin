@@ -1,0 +1,18 @@
+{
+  "name": "digitalronin/wiki-plugin",
+  "type": "october-plugin",
+  "description": "Wiki plugin for October CMS",
+  "homepage": "https://github.com/digital-ronin/oc-wiki-plugin/",
+  "keywords": ["october", "octobercms", "wiki"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Daniel-Bruni Ziermann",
+      "email": "info@digitalronin.de"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "composer/installers": "~1.0"
+  }
+}
