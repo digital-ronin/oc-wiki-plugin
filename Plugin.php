@@ -11,8 +11,8 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'wiki',
-            'description' => 'Provides some really cool wiki features.',
+            'name'        => 'Wiki',
+            'description' => 'Provides some really cool Wiki features.',
             'author'      => 'Digital Ronin',
             'icon'        => 'icon-book',
             'homepage'    => 'https://github.com/digital-ronin/oc-wiki-plugin/'
@@ -54,6 +54,12 @@ class Plugin extends PluginBase
                         'icon'        => 'icon-copy',
                         'url'         => Backend::url('digitalronin/wiki/pages'),
                         //'permissions' => ['digitalronin.wiki.*']
+                    ],
+                    'categories' => [
+                        'label'       => 'rainlab.blog::lang.blog.categories',
+                        'icon'        => 'icon-list-ul',
+                        'url'         => Backend::url('digitalronin/wiki/categories'),
+                        'permissions' => ['rainlab.blog.access_categories']
                     ]
                 ]
             ]

@@ -22,17 +22,11 @@ class Page extends Model
     ];
 
     /**
-     * Disable timestamps by default.
-     * Remove this line if timestamps are defined in the database table.
-     */
-    public $timestamps = false;
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['url'];
+    protected $fillable = ['slug'];
 
     /**
      * Soft deleting
@@ -44,22 +38,11 @@ class Page extends Model
     /**
      * @var array Relations
      */
-    public $hasMany = [
-        'contents' => ['DigitalRonin\Wiki\Models\PageContent', 'page_id' => 'id']
-    ];
     public $belongsToMany = [
-        'refersTo' => [
-            'DigitalRonin\Wiki\Models\Page',
-            'table'    => 'digitalronin_wiki_pages_links',
-            'key'      => 'page_id',
-            'otherKey' => 'refers_to_page_id',
-            'pivot'    => 'url'
-        ],
-        'refersFrom' => [
-            'DigitalRonin\Wiki\Models\Page',
-            'table'    => 'digitalronin_wiki_pages_links',
-            'key'      => 'refers_to_page_id',
-            'otherKey' => 'page_id'
+        'categories' => [
+            'DigitalRonin\Wiki\Models\Category',
+            'table' => 'digitalronin_wiki_pages_categories',
+            'order' => 'name'
         ]
     ];
 

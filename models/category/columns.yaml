@@ -1,0 +1,13 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    name:
+        label: digitalronin.wiki::lang.category.name
+        searchable: true
+
+    post_count:
+        label: digitalronin.wiki::lang.category.pages
+        sortable: false
