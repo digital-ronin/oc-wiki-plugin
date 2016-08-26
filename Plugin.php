@@ -11,13 +11,17 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name' => 'wiki',
+            'name'        => 'wiki',
             'description' => 'Provides some really cool wiki features.',
-            'author' => 'Digital Ronin',
-            'icon' => 'icon-book'
+            'author'      => 'Digital Ronin',
+            'icon'        => 'icon-book',
+            'homepage'    => 'https://github.com/digital-ronin/oc-wiki-plugin/'
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function registerComponents()
     {
         return [

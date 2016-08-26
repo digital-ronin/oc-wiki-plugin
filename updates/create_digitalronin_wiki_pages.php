@@ -15,11 +15,25 @@ class CreateDigitalroninWikiPages extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
+
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('content');
+            $table->text('content')->nullable();
+
             $table->boolean('draft')->default(true);
-            
+
+            // Category
+            $table->unsignedInteger('category_id');
+            $table
+                ->foreign('category_id')
+                ->references('id')
+                ->on('digitalronin_wiki_categories')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+
+            // Auto Columns
+            $table->timestamps();
             $table->softDeletes();
         });
     }

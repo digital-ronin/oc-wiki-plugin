@@ -1,5 +1,5 @@
 1.0.1:
     - 'Initialize plugin.'
-1.0.2:
+    - create_digitalronin_wiki_categories.php
     - create_digitalronin_wiki_pages.php
-    - create_digitalronin_wiki_pages_content.php
+    - create_digitalronin_wiki_versions.php
