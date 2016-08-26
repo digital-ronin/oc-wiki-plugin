@@ -1,0 +1,29 @@
+{% set wiki = __SELF__.wiki %}
+
+
+<div class="container">
+    <ul>
+        <li><a href="{{ this.page.url }}">Page</a></li>
+        <li><a href="">Edit</a></li>
+        <li><a href="">History</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <h2>Page</h2>
+    {{ wiki.title }}
+    {{ wiki.slug }}
+    {{ wiki.text }}
+</div>
+
+<div class="container">
+    <h2>Edit {{ wiki.title }}</h2>
+    {{ form_open() }}
+        <div class="form-group">
+            <textarea class="form-control" rows="10" name="text">{{ wiki.text }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+
+    {{ form_close() }}
+</div>
