@@ -1,29 +1,19 @@
 {% set wiki = __SELF__.wiki %}
 
-
 <div class="container">
-    <ul>
-        <li><a href="{{ this.page.url }}">Page</a></li>
-        <li><a href="">Edit</a></li>
-        <li><a href="">History</a></li>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#viewTab" aria-controls="viewTab" role="tab" data-toggle="tab">View</a></li>
+        <li role="presentation"><a href="#createTab" aria-controls="createTab" role="tab" data-toggle="tab">Create</a></li>
+        <li role="presentation"><a href="#updateTab" aria-controls="updateTab" role="tab" data-toggle="tab">Update</a></li>
+        <li role="presentation"><a href="#historyTab" aria-controls="historyTab" role="tab" data-toggle="tab">History</a></li>
     </ul>
-</div>
 
-<div class="container">
-    <h2>Page</h2>
-    {{ wiki.title }}
-    {{ wiki.slug }}
-    {{ wiki.text }}
-</div>
-
-<div class="container">
-    <h2>Edit {{ wiki.title }}</h2>
-    {{ form_open() }}
-        <div class="form-group">
-            <textarea class="form-control" rows="10" name="text">{{ wiki.text }}</textarea>
-        </div>
-
-        <button type="submit" class="btn btn-default">Submit</button>
-
-    {{ form_close() }}
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="viewTab">{% partial __SELF__~"::view" %}</div>
+        <div role="tabpanel" class="tab-pane" id="createTab">{% partial __SELF__~"::create" %}</div>
+        <div role="tabpanel" class="tab-pane" id="updateTab">{% partial __SELF__~"::update" %}</div>
+        <div role="tabpanel" class="tab-pane" id="historyTab">{% partial __SELF__~"::history" %}</div>
+    </div>
 </div>

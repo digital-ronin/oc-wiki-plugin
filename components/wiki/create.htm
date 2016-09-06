@@ -1,0 +1,9 @@
+<div class="container">
+    <form role="form"
+          data-request="{{ __SELF__ }}::onSave"
+          data-request-success="$el.hide();$('.confirm-container').removeClass('hide');">
+        <h2>Edit {{ wiki.title }}</h2>
+
+        {{ form.formRender()|raw }}
+    </form>
+</div>

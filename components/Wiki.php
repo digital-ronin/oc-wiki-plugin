@@ -2,6 +2,8 @@
 
 use Cms\Classes\ComponentBase;
 use DigitalRonin\Wiki\Models\Page as WikiPage;
+use DigitalRonin\Wiki\Controllers\Pages as WikiPagesController;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Wiki extends ComponentBase
 {
@@ -43,12 +45,23 @@ class Wiki extends ComponentBase
     {
         $this->wiki = $this->page['wiki'] = $this->loadPage();
 
-        /*
-         * TODO: Use October CMS Markdown Editor from Backend??
-         *
-         * $this->addCss('../../../modules/backend/formwidgets/markdowneditor/assets/css/markdowneditor.css');
-         * $this->addJs('../../../modules/backend/formwidgets/markdowneditor/assets/js/markdowneditor.js');
-         */
+        // Build a back-end form with the context of 'frontend'
+        $formController = new WikiPagesController();
+        $formController->create('frontend');
+
+        // Append the formController to the page
+        $this->page['form'] = $formController;
+
+        // Append the missing style file so that our front-end forms would look
+        // just like back-end
+        $basePath = '../../..';
+
+        $this->addCss($basePath.'/modules/backend/assets/css/october.css', 'core');
+
+        // Markdown Editor
+        //$this->addCss($basePath.'/modules/backend/formwidgets/markdowneditor/assets/css/markdowneditor.css');
+        //$this->addJs($basePath.'/modules/backend/formwidgets/markdowneditor/assets/js/markdowneditor.js');
+
     }
 
     /**
@@ -63,7 +76,17 @@ class Wiki extends ComponentBase
 
         $page = WikiPage::currentContent()->where('slug', $slug)->first();
 
+        // TODO: Exception for no record found
+        if (is_null($page))
+            throw new ModelNotFoundException('No Page found!');
+
         return $page;
     }
 
+    /**
+     * @return array
+     */
+    public function onSave() {
+        return ['error' => WikiPage::create(post('Page'))];
+    }
 }
