@@ -22,7 +22,7 @@ class CreateDigitalroninWikiPages extends Migration
 
             $table->boolean('draft')->default(true);
 
-            // Category
+            /* Category
             $table->unsignedInteger('category_id');
             $table
                 ->foreign('category_id')
@@ -30,6 +30,7 @@ class CreateDigitalroninWikiPages extends Migration
                 ->on('digitalronin_wiki_categories')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            */
 
 
             // Auto Columns

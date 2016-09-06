@@ -32,8 +32,3 @@ secondaryTabs:
             size: huge
             stretch: true
             mode: split
-        categories:
-            tab: digitalronin.wiki::lang.page.tab_categories
-            type: relation
-            commentAbove: digitalronin.wiki::lang.page.categories_comment
-            placeholder: digitalronin.wiki::lang.page.categories_placeholder

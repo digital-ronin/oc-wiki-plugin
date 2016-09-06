@@ -8,13 +8,6 @@ columns:
         label: digitalronin.wiki::lang.page.title
         searchable: true
 
-    categories:
-        label: rainlab.blog::lang.post.categories
-        relation: categories
-        select: name
-        searchable: true
-        sortable: false
-
     created_at:
         label: digitalronin.wiki::lang.page.created
         type: date

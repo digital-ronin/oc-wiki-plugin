@@ -23,12 +23,17 @@ class Pages extends Controller
         BackendMenu::setContext('DigitalRonin.Wiki', 'wiki', 'pages');
     }
 
-    public function create()
-    {
+    public function create() {
         BackendMenu::setContextSideMenu('new_page');
 
         $this->bodyClass = 'compact-container';
 
         return $this->asExtension('FormController')->create();
+    }
+
+    public function update($pageId = null) {
+        $this->bodyClass = 'compact-container';
+
+        return $this->asExtension('FormController')->update($pageId);
     }
 }

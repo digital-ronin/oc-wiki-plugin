@@ -4,11 +4,10 @@
         <?= Form::open([
             'class' => 'layout',
             'data-change-monitor' => 'true',
-            'data-window-close-confirm' => e(trans('rainlab.blog::lang.post.close_confirm')),
+            'data-window-close-confirm' => e(trans('digitalronin.wiki::lang.page.close_confirm')),
             'id' => 'page-form'
         ]) ?>
-        <?= $this->formRender() ?>
-
+            <?= $this->formRender() ?>
         <?= Form::close() ?>
     </div>
 
