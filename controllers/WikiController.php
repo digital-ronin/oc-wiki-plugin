@@ -6,31 +6,22 @@ use Illuminate\Routing\Controller;
 class WikiController extends Controller
 {
     /**
-     * @return mixed
-     */
-    public function index()
-    {
-        $page = new \Model();
-        $page->title  = 'test';
-        $page->content = 'Diet ist ein test';
-
-        return view('digitalronin.wiki::index')->with(['wiki' => $page]);
-    }
-
-    /**
      * Show page
      *
      * @param string $slug
      * @return \Illuminate\View\View
      */
-    public function show($slug)
+    public function showPage($slug = null)
     {
+        if(is_null($slug))
+            $slug = 'index';
+
         $page = new \Model();
-        $page->title  = 'test';
+        $page->title  = 'Test';
         $page->slug = $slug;
         $page->content = 'Diet ist ein test';
 
-        return view('digitalronin.wiki::index')->with(['wiki' => $page]);
+        return view('digitalronin.wiki::page')->with(['wiki' => $page]);
     }
 
     /**
@@ -46,6 +37,7 @@ class WikiController extends Controller
 
     /**
      * @param $pageSlug
+     * @return mixed
      */
     public function history($pageSlug)
     {

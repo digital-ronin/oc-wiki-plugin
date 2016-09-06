@@ -47,6 +47,18 @@ class Page extends Model
     ];
 
     /**
+     * @return Page
+     */
+    public function getContent() {
+        $model = new Page();
+        $model->title = 'test title';
+        $model->slug = 'test-slug';
+        $model->content = 'dies ist ein test';
+
+        return $model;
+    }
+
+    /**
      * Scope a query to only include current Content.
      * @param $query
      */
