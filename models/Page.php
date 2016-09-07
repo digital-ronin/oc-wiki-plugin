@@ -26,7 +26,12 @@ class Page extends Model
      *
      * @var array
      */
-    protected $fillable = ['slug'];
+    protected $fillable = [
+        'title',
+        'slug',
+        'draft',
+        'content'
+    ];
 
     /**
      * Soft deleting
@@ -37,7 +42,7 @@ class Page extends Model
 
     /**
      * @var array Relations
-     */
+
     public $belongsToMany = [
         'categories' => [
             'DigitalRonin\Wiki\Models\Category',
@@ -45,18 +50,7 @@ class Page extends Model
             'order' => 'name'
         ]
     ];
-
-    /**
-     * @return Page
      */
-    public function getContent() {
-        $model = new Page();
-        $model->title = 'test title';
-        $model->slug = 'test-slug';
-        $model->content = 'dies ist ein test';
-
-        return $model;
-    }
 
     /**
      * Scope a query to only include current Content.
@@ -65,6 +59,6 @@ class Page extends Model
     public function scopeCurrentContent($query)
     {
         return $query
-            ->where('draft', false);
+            ->where('draft', true); // true for debug
     }
 }

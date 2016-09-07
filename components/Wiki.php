@@ -2,7 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use DigitalRonin\Wiki\Models\Page as WikiPage;
-use DigitalRonin\Wiki\Controllers\Pages as WikiPagesController;
+use DigitalRonin\Wiki\Models\Version;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Wiki extends ComponentBase
@@ -44,24 +44,19 @@ class Wiki extends ComponentBase
     public function onRun()
     {
         $this->wiki = $this->page['wiki'] = $this->loadPage();
+        $this->loadSimpleMde();
+    }
 
-        // Build a back-end form with the context of 'frontend'
-        $formController = new WikiPagesController();
-        $formController->create('frontend');
+    /**
+     * Load SimpleMde Assets
+     */
+    private function loadSimpleMde() {
+        // Load Vendor Files
+        $this->addCss('assets/vendor/simplemde/dist/simplemde.min.css');
+        $this->addJs('assets/vendor/simplemde/dist/simplemde.min.js');
 
-        // Append the formController to the page
-        $this->page['form'] = $formController;
-
-        // Append the missing style file so that our front-end forms would look
-        // just like back-end
-        $basePath = '../../..';
-
-        $this->addCss($basePath.'/modules/backend/assets/css/october.css', 'core');
-
-        // Markdown Editor
-        //$this->addCss($basePath.'/modules/backend/formwidgets/markdowneditor/assets/css/markdowneditor.css');
-        //$this->addJs($basePath.'/modules/backend/formwidgets/markdowneditor/assets/js/markdowneditor.js');
-
+        // Load Editor js
+        $this->addJs('assets/js/editor.js');
     }
 
     /**
@@ -84,9 +79,23 @@ class Wiki extends ComponentBase
     }
 
     /**
-     * @return array
+     * Create a new Wiki Page
      */
     public function onSave() {
-        return ['error' => WikiPage::create(post('Page'))];
+        // Build the WikiPage
+        $wikiPage = WikiPage::create([
+            'title'   => post('title'),
+            'slug'    => post('slug'),
+            'content' => post('content')
+        ]);
+
+        return $wikiPage;
+    }
+
+    public function onUpdate() {
+        $version = Version::create([
+            'page_id' => '1',
+            'content' => post('content')
+        ]);
     }
 }

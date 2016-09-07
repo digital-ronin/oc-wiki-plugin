@@ -1,9 +1,23 @@
-<div class="container fancy-layout">
-    <form role="form"
-          data-request="{{ __SELF__ }}::onSave"
-          data-request-success="$el.hide();$('.confirm-container').removeClass('hide');">
-        <h2>Edit {{ wiki.title }}</h2>
+<div class="container">
+    <form role="form" data-request="{{__SELF__}}::onUpdate">
+        <h2>Edit Page</h2>
 
-        {{ form.formRender()|raw }}
+        <div class="form-groups">
+            <div class="form-group text-field span-left">
+                <label for="Form-field-Page-title">Title</label>
+                <input type="text" class="form-control" value="{{ wiki.title }}" id="Form-field-Page-title" name="title" placeholder="New page title">
+            </div>
+
+            <div class="form-group text-field span-right">
+                <label for="Form-field-Page-slug">Slug</label>
+                <input type="text" class="form-control" value="{{ wiki.slug }}" id="Form-field-Page-slug" name="slug" placeholder="new-page-slug">
+            </div>
+
+            <div class="form-group">
+                <textarea name="content" id="Form-field-Page-content-edit" placeholder="Enter Content">{{ wiki.content }}</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg pull-left">Save</button>
+        </div>
     </form>
 </div>

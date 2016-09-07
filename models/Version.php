@@ -18,16 +18,14 @@ class Version extends Model
     public $table = 'digitalronin_wiki_versions';
 
     /**
-     * The attributes that are not mass-assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [
-        'id',
-        'content',
-        'created_at',
-        'updated_at',
-        'deleted_at'
+    protected $fillable = [
+        'page_id',
+        'draft',
+        'content'
     ];
 
     /**
